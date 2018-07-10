@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/background_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#44000000" />
+
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/bg_fingerprint_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/auth_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/sign_in"
+                android:textColor="@color/auth_title"
+                android:textSize="19sp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/fingerprint_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:id="@+id/fingerprint_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/fingerprint_description"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                    <ImageView
+                        android:id="@+id/fingerprint_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/fingerprint_description"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/ic_fingerprint" />
+
+                    <TextView
+                        android:id="@+id/fingerprint_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/fingerprint_icon"
+                        android:layout_alignTop="@+id/fingerprint_icon"
+                        android:layout_marginLeft="16dp"
+                        android:layout_toRightOf="@+id/fingerprint_icon"
+                        android:gravity="center_vertical"
+                        android:text="@string/fingerprint_hint"
+                        android:textColor="@color/hint_color" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/backup_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="16dp"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:id="@+id/password_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/password_description"
+                            android:textColor="?android:attr/textColorSecondary" />
+
+                        <TextView
+                            android:id="@+id/new_fingerprint_enrolled_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_fingerprint_enrolled_description"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/description"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="16dp"
+                        android:ems="10"
+                        android:hint="@string/password"
+                        android:imeOptions="actionGo"
+                        android:inputType="textPassword" />
+
+                    <CheckBox
+                        android:id="@+id/use_fingerprint_in_future_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/password"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="16dp"
+                        android:checked="true"
+                        android:text="@string/use_fingerprint_in_future"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonPanel"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingTop="4dp">
+
+            <Space
+                android:id="@+id/spacer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                style="?attr/buttonBarNegativeButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/second_dialog_button"
+                style="?attr/buttonBarPositiveButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">library</string>
+    <string name="fingerprint_not_recognized">指纹扫描失败，请重试</string>
+    <string name="fingerprint_hint">将手指接触传感器</string>
+    <string name="fingerprint_success">认证成功</string>
+    <string name="sign_in">身份验证</string>
+    <string name="fingerprint_description">请将手指接触传感器进行验证</string>
+    <string name="password_description">请输入密码进行验证</string>
+    <string name="new_fingerprint_enrolled_description">新录入的指纹，需要密码进行验证</string>
+    <string name="password">密码</string>
+    <string name="use_fingerprint_in_future">以后均使用指纹验证</string>
+    <string name="finger_auth_cancel">取消</string>
+    <string name="use_password">使用密码</string>
+    <string name="ok">确认</string>
+</resources>
