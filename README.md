@@ -15,12 +15,12 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.jianyuyouhun:FingerprintScanHelper:1.0.1'
+	        implementation 'com.github.jianyuyouhun:FingerprintScanHelper:1.0.2'
 	}
 
 ### 代码中
 
-    new FingerprintScanHelper(AppCompatActivity.this)//必须是AppCompatActivity的实例
+    new FingerprintScanHelper(context)
             .startAuth(new OnAuthResultListener() {
                 @Override
                 public void onSuccess() {
