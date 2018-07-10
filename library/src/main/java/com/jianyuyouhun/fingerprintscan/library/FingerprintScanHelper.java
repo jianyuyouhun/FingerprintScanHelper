@@ -57,6 +57,10 @@ public class FingerprintScanHelper {
     }
 
     public void startAuth(OnAuthResultListener listener) {
+        startAuth(listener, true, true);
+    }
+
+    public void startAuth(OnAuthResultListener listener, boolean cancelAble, boolean canTouchOutsideCancel) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
                 || fingerprintManager == null
                 || keyguardManager == null
@@ -76,15 +80,16 @@ public class FingerprintScanHelper {
                 throw new RuntimeException("Failed to get an instance of Cipher", e);
             }
             createKey(DEFAULT_KEY_NAME);
-            doAuth(defaultCipher, DEFAULT_KEY_NAME, listener);
+            doAuth(defaultCipher, DEFAULT_KEY_NAME, listener, cancelAble, canTouchOutsideCancel);
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void doAuth(Cipher defaultCipher, String defaultKeyName, OnAuthResultListener listener) {
+    private void doAuth(Cipher defaultCipher, String defaultKeyName, OnAuthResultListener listener,
+                        boolean cancelAble, boolean canTouchOutsideCancel) {
         if (initCipher(defaultCipher, defaultKeyName)) {
             FingerprintScanFragmentDialog dialog
-                    = new FingerprintScanFragmentDialog(context, listener);
+                    = new FingerprintScanFragmentDialog(context, listener, cancelAble, canTouchOutsideCancel);
             dialog.setCryptoObject(new FingerprintManager.CryptoObject(defaultCipher));
             dialog.setStage(
                     FingerprintScanFragmentDialog.Stage.FINGERPRINT);
@@ -95,7 +100,7 @@ public class FingerprintScanHelper {
             // and ask the user if they want to authenticate with fingerprints in the
             // future
             FingerprintScanFragmentDialog dialog
-                    = new FingerprintScanFragmentDialog(context, listener);
+                    = new FingerprintScanFragmentDialog(context, listener, cancelAble, canTouchOutsideCancel);
             dialog.setCryptoObject(new FingerprintManager.CryptoObject(defaultCipher));
             dialog.setStage(
                     FingerprintScanFragmentDialog.Stage.NEW_FINGERPRINT_ENROLLED);

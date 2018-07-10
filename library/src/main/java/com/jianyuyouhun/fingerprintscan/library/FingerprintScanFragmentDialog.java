@@ -27,6 +27,8 @@ import android.widget.TextView;
 public class FingerprintScanFragmentDialog extends Dialog
         implements TextView.OnEditorActionListener, FingerprintDialogController.Callback {
 
+    private View backgroundLayout;
+    private View contentLayout;
     private TextView mTitleView;
     private Button mCancelButton;
     private Button mSecondDialogButton;
@@ -45,9 +47,14 @@ public class FingerprintScanFragmentDialog extends Dialog
 
     private OnAuthResultListener listener;
 
-    FingerprintScanFragmentDialog(Context context, @NonNull OnAuthResultListener listener) {
+    private boolean canTouchOutsideCancel = true;
+
+    FingerprintScanFragmentDialog(Context context, @NonNull OnAuthResultListener listener,
+                                  boolean cancelAble, boolean canTouchOutsideCancel) {
         super(context, R.style.FingerTheme);
         this.listener = listener;
+        this.canTouchOutsideCancel = canTouchOutsideCancel;
+        setCancelable(cancelAble);
     }
 
     @Override
@@ -60,6 +67,8 @@ public class FingerprintScanFragmentDialog extends Dialog
     }
 
     private void initView() {
+        backgroundLayout = findViewById(R.id.background_layout);
+        contentLayout = findViewById(R.id.content_layout);
         mTitleView = findViewById(R.id.auth_title);
         mCancelButton = findViewById(R.id.cancel_button);
         mSecondDialogButton = findViewById(R.id.second_dialog_button);
@@ -77,6 +86,20 @@ public class FingerprintScanFragmentDialog extends Dialog
     }
 
     private void registerListener() {
+        backgroundLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (canTouchOutsideCancel) {
+                    dismiss();
+                }
+            }
+        });
+        contentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

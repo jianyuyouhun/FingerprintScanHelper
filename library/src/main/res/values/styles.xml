@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="FingerTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="FingerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:animation">@null</item>
+    </style>
 </resources>
