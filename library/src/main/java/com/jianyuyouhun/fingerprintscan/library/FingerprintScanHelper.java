@@ -1,13 +1,13 @@
 package com.jianyuyouhun.fingerprintscan.library;
 
 import android.app.KeyguardManager;
+import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -34,10 +34,10 @@ public class FingerprintScanHelper {
     private KeyGenerator mKeyGenerator;
     private KeyguardManager keyguardManager;
     private static final String DEFAULT_KEY_NAME = "default_key";
-    private AppCompatActivity context;
+    private Context context;
     private FingerprintManager fingerprintManager;
 
-    public FingerprintScanHelper(AppCompatActivity context) {
+    public FingerprintScanHelper(Context context) {
         this.context = context;
         try {
             mKeyStore = KeyStore.getInstance("AndroidKeyStore");
