@@ -57,7 +57,10 @@ public class FingerprintScanHelper {
     }
 
     public void startAuth(OnAuthResultListener listener) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
+                || fingerprintManager == null
+                || keyguardManager == null
+                || !fingerprintManager.isHardwareDetected()) {
             listener.onDeviceNotSupport();
         } else if (!keyguardManager.isKeyguardSecure()) {
             listener.onFailed("请先设置锁屏密码");
